@@ -1,0 +1,934 @@
+ASN_MODULE_SRCS=	\
+	BCCH-DL-SCH-Message.c	\
+	BCCH-DL-SCH-MessageType.c	\
+	SystemInformation.c	\
+	SystemInformationBlockType1.c	\
+	SystemInformation-r8-IEs.c	\
+	PLMN-Identity.c	\
+	MCC.c	\
+	MNC.c	\
+	MCC-MNC-Digit.c	\
+	MultiBandInfoList.c	\
+	MultiBandInfoList-v9e0.c	\
+	MultiBandInfoList-v10j0.c	\
+	MultiBandInfoList-r11.c	\
+	MultiBandInfo-v9e0.c	\
+	AdditionalSpectrumEmission.c	\
+	NS-PmaxList-r10.c	\
+	NS-PmaxValue-r10.c	\
+	FreqBandIndicator-v9e0.c	\
+	FreqBandIndicator-r11.c	\
+	TrackingAreaCode.c	\
+	CellIdentity.c	\
+	CSG-Identity.c	\
+	Q-RxLevMin.c	\
+	P-Max.c	\
+	FreqBandIndicator.c	\
+	TDD-Config.c	\
+	TDD-Config-v1130.c	\
+	TDD-Config-v14xy.c	\
+	TDD-ConfigSL-r12.c	\
+	CellSelectionInfoCE-r13.c	\
+	Q-QualMin-r9.c	\
+	CellSelectionInfoCE1-r13.c	\
+	SystemInformationBlockType1-v890-IEs.c	\
+	SystemInformationBlockType1-v8h0-IEs.c	\
+	SystemInformationBlockType1-v9e0-IEs.c	\
+	SystemInformationBlockType1-v10j0-IEs.c	\
+	SystemInformationBlockType1-v920-IEs.c	\
+	SystemInformationBlockType1-v1130-IEs.c	\
+	SystemInformationBlockType1-v1250-IEs.c	\
+	SystemInformationBlockType1-v1310-IEs.c	\
+	SystemInformationBlockType1-v1320-IEs.c	\
+	SystemInformationBlockType1-v1350-IEs.c	\
+	SystemInformationBlockType1-v14xy-IEs.c	\
+	PLMN-IdentityList.c	\
+	PLMN-IdentityInfo.c	\
+	SchedulingInfoList.c	\
+	SchedulingInfo.c	\
+	SchedulingInfoList-BR-r13.c	\
+	SchedulingInfo-BR-r13.c	\
+	SIB-MappingInfo.c	\
+	SIB-Type.c	\
+	SystemInfoValueTagList-r13.c	\
+	SystemInfoValueTagSI-r13.c	\
+	CellSelectionInfo-v920.c	\
+	CellSelectionInfo-v1130.c	\
+	CellSelectionInfo-v1250.c	\
+	RadioResourceConfigCommonSIB.c	\
+	RadioResourceConfigCommon.c	\
+	RadioResourceConfigCommonPSCell-r12.c	\
+	RadioResourceConfigCommonSCell-r10.c	\
+	BCCH-Config.c	\
+	BCCH-Config-v1310.c	\
+	FreqHoppingParameters-r13.c	\
+	PCCH-Config.c	\
+	PCCH-Config-v1310.c	\
+	UL-CyclicPrefixLength.c	\
+	HighSpeedConfig-r14.c	\
+	HighSpeedConfigSCell-r14.c	\
+	RACH-ConfigCommon.c	\
+	RACH-ConfigCommon-v1250.c	\
+	RACH-ConfigCommonSCell-r11.c	\
+	RACH-CE-LevelInfoList-r13.c	\
+	RACH-CE-LevelInfo-r13.c	\
+	PowerRampingParameters.c	\
+	PreambleTransMax.c	\
+	SystemInformationBlockType2.c	\
+	SystemInformationBlockType2-v8h0-IEs.c	\
+	SystemInformationBlockType2-v9e0-IEs.c	\
+	AC-BarringConfig.c	\
+	MBSFN-SubframeConfigList.c	\
+	MBSFN-SubframeConfigList-v14xy.c	\
+	AC-BarringPerPLMN-List-r12.c	\
+	AC-BarringPerPLMN-r12.c	\
+	ACDC-BarringForCommon-r13.c	\
+	ACDC-BarringPerPLMN-List-r13.c	\
+	ACDC-BarringPerPLMN-r13.c	\
+	BarringPerACDC-CategoryList-r13.c	\
+	BarringPerACDC-Category-r13.c	\
+	UDT-Restricting-r13.c	\
+	UDT-RestrictingPerPLMN-List-r13.c	\
+	UDT-RestrictingPerPLMN-r13.c	\
+	CIOT-EPS-OptimisationInfo-r13.c	\
+	CIOT-OptimisationPLMN-r13.c	\
+	SystemInformationBlockType3.c	\
+	SystemInformationBlockType4.c	\
+	SystemInformationBlockType5.c	\
+	SystemInformationBlockType6.c	\
+	SystemInformationBlockType7.c	\
+	SystemInformationBlockType8.c	\
+	SystemInformationBlockType9.c	\
+	SystemInformationBlockType10.c	\
+	SystemInformationBlockType11.c	\
+	SystemInformationBlockType12-r9.c	\
+	SystemInformationBlockType13-r9.c	\
+	SystemInformationBlockType14-r11.c	\
+	EAB-ConfigPLMN-r11.c	\
+	EAB-Config-r11.c	\
+	SystemInformationBlockType15-r11.c	\
+	MBMS-SAI-List-r11.c	\
+	MBMS-SAI-r11.c	\
+	MBMS-SAI-InterFreqList-r11.c	\
+	MBMS-SAI-InterFreqList-v1140.c	\
+	MBMS-SAI-InterFreq-r11.c	\
+	SystemInformationBlockType16-r11.c	\
+	SystemInformationBlockType17-r12.c	\
+	WLAN-OffloadInfoPerPLMN-r12.c	\
+	WLAN-Id-List-r12.c	\
+	WLAN-Identifiers-r12.c	\
+	SystemInformationBlockType18-r12.c	\
+	SystemInformationBlockType19-r12.c	\
+	SL-CarrierFreqInfoList-r12.c	\
+	SL-CarrierFreqInfoList-v1310.c	\
+	SL-CarrierFreqInfo-r12.c	\
+	SL-DiscConfigRelayUE-r13.c	\
+	SL-DiscConfigRemoteUE-r13.c	\
+	ReselectionInfoRelay-r13.c	\
+	SL-CarrierFreqInfo-v1310.c	\
+	PLMN-IdentityList4-r12.c	\
+	PLMN-IdentityInfo2-r12.c	\
+	SL-DiscTxResourcesInterFreq-r13.c	\
+	SL-DiscConfigOtherInterFreq-r13.c	\
+	SL-ResourcesInterFreq-r13.c	\
+	SystemInformationBlockType20-r13.c	\
+	MPDCCH-SC-MCCH-Config-r14.c	\
+	SC-MCCH-SchedulingInfo-r14.c	\
+	SystemInformationBlockType21-r14.c	\
+	SL-V2X-ConfigCommon-r14.c	\
+	SystemInformation-v8a0-IEs.c	\
+	PRACH-ConfigSIB.c	\
+	PRACH-Config.c	\
+	PRACH-ConfigInfo.c	\
+	PDSCH-ConfigCommon.c	\
+	PDSCH-ConfigCommon-v1310.c	\
+	PDSCH-ConfigDedicated.c	\
+	PDSCH-ConfigDedicated-v1130.c	\
+	PDSCH-ConfigDedicated-v1280.c	\
+	PDSCH-ConfigDedicated-v1310.c	\
+	PDSCH-ConfigDedicated-v14xy.c	\
+	RE-MappingQCLConfigToAddModList-r11.c	\
+	RE-MappingQCLConfigToReleaseList-r11.c	\
+	PDSCH-RE-MappingQCL-Config-r11.c	\
+	SoundingRS-UL-ConfigCommon.c	\
+	SoundingRS-UL-ConfigDedicated.c	\
+	SoundingRS-UL-ConfigDedicated-v1020.c	\
+	SoundingRS-UL-ConfigDedicated-v1310.c	\
+	SoundingRS-UL-ConfigDedicatedUpPTsExt-r13.c	\
+	SoundingRS-UL-ConfigDedicatedAperiodic-r10.c	\
+	SoundingRS-UL-ConfigDedicatedAperiodic-v1310.c	\
+	SoundingRS-UL-ConfigDedicatedAperiodicUpPTsExt-r13.c	\
+	SoundingRS-UL-ConfigDedicatedAperiodic-v14xy.c	\
+	SRS-ConfigAp-r10.c	\
+	SRS-ConfigAp-v1310.c	\
+	SRS-ConfigAp-r13.c	\
+	SRS-AntennaPort.c	\
+	UplinkPowerControlCommon.c	\
+	UplinkPowerControlCommon-v1020.c	\
+	UplinkPowerControlCommon-v1310.c	\
+	UplinkPowerControlCommonPSCell-r12.c	\
+	UplinkPowerControlCommonSCell-r10.c	\
+	UplinkPowerControlCommonSCell-v1130.c	\
+	UplinkPowerControlCommonSCell-v1310.c	\
+	UplinkPowerControlCommonPUSCH-LessCell-v14xy.c	\
+	UplinkPowerControlDedicated.c	\
+	UplinkPowerControlDedicated-v1020.c	\
+	UplinkPowerControlDedicated-v1130.c	\
+	UplinkPowerControlDedicated-v1250.c	\
+	UplinkPUSCH-LessPowerControlDedicated-v14xy.c	\
+	UplinkPowerControlDedicatedSCell-r10.c	\
+	UplinkPowerControlDedicatedSCell-v1310.c	\
+	Alpha-r12.c	\
+	DeltaFList-PUCCH.c	\
+	DeltaTxD-OffsetListPUCCH-r10.c	\
+	DeltaTxD-OffsetListPUCCH-v1130.c	\
+	PUSCH-ConfigCommon.c	\
+	PUSCH-ConfigCommon-v1270.c	\
+	PUSCH-ConfigCommon-v1310.c	\
+	PUSCH-ConfigDedicated.c	\
+	PUSCH-ConfigDedicated-v1020.c	\
+	PUSCH-ConfigDedicated-v1130.c	\
+	PUSCH-ConfigDedicated-v1250.c	\
+	PUSCH-ConfigDedicated-r13.c	\
+	PUSCH-ConfigDedicated-v14xy.c	\
+	PUSCH-ConfigDedicatedSCell-r10.c	\
+	TDD-PUSCH-UpPTS-r14.c	\
+	PUSCH-ConfigDedicatedScell-v14xy.c	\
+	Enable256QAM-r14.c	\
+	PUSCH-EnhancementsConf-r14.c	\
+	UL-ReferenceSignalsPUSCH.c	\
+	PUCCH-ConfigCommon.c	\
+	PUCCH-ConfigCommon-v1310.c	\
+	PUCCH-ConfigCommon-v14xy.c	\
+	PUCCH-ConfigDedicated.c	\
+	PUCCH-ConfigDedicated-v1020.c	\
+	PUCCH-ConfigDedicated-v1130.c	\
+	PUCCH-ConfigDedicated-v1250.c	\
+	PUCCH-ConfigDedicated-r13.c	\
+	PUCCH-ConfigDedicated-v14xy.c	\
+	Format4-resource-r13.c	\
+	Format5-resource-r13.c	\
+	N1PUCCH-AN-CS-r10.c	\
+	N1PUCCH-AN-InfoList-r13.c	\
+	PRACH-ConfigSIB-v1310.c	\
+	PRACH-Config-v1310.c	\
+	PRACH-Config-v14xy.c	\
+	PRACH-ConfigSCell-r10.c	\
+	PRACH-ParametersListCE-r13.c	\
+	PRACH-ParametersCE-r13.c	\
+	RSRP-ThresholdsPrachInfoList-r13.c	\
+	PHICH-Config.c	\
+	AntennaInfoCommon.c	\
+	AntennaInfoDedicated.c	\
+	AntennaInfoDedicated-v920.c	\
+	AntennaInfoDedicated-r10.c	\
+	AntennaInfoDedicated-v10i0.c	\
+	AntennaInfoDedicated-v1250.c	\
+	AntennaInfoDedicated-v14xy.c	\
+	ARFCN-ValueEUTRA.c	\
+	ARFCN-ValueEUTRA-v9e0.c	\
+	ARFCN-ValueEUTRA-r9.c	\
+	UE-TimersAndConstants.c	\
+	TimeAlignmentTimer.c	\
+	MBSFN-SubframeConfig.c	\
+	MBSFN-SubframeConfig-v14xy.c	\
+	MobilityStateParameters.c	\
+	ReselectionThreshold.c	\
+	CellReselectionPriority.c	\
+	AllowedMeasBandwidth.c	\
+	PresenceAntennaPort1.c	\
+	NeighCellConfig.c	\
+	T-Reselection-NB-r13.c	\
+	SpeedStateScaleFactors.c	\
+	ReselectionThresholdQ-r9.c	\
+	RedistributionServingInfo-r13.c	\
+	CellReselectionServingFreqInfo-v1310.c	\
+	SystemInformationBlockType3-v10j0-IEs.c	\
+	T-Reselection.c	\
+	T-ReselectionEUTRA-CE-r13.c	\
+	IntraFreqNeighCellList.c	\
+	IntraFreqNeighCellInfo.c	\
+	IntraFreqBlackCellList.c	\
+	PhysCellIdRange.c	\
+	SystemInformationBlockType5-v8h0-IEs.c	\
+	SystemInformationBlockType5-v9e0-IEs.c	\
+	SystemInformationBlockType5-v10j0-IEs.c	\
+	InterFreqCarrierFreqList.c	\
+	InterFreqCarrierFreqList-v1250.c	\
+	InterFreqCarrierFreqList-v1310.c	\
+	InterFreqCarrierFreqList-v1350.c	\
+	InterFreqCarrierFreqListExt-r12.c	\
+	InterFreqCarrierFreqListExt-v1280.c	\
+	InterFreqCarrierFreqListExt-v1310.c	\
+	InterFreqCarrierFreqListExt-v1350.c	\
+	InterFreqCarrierFreqInfo.c	\
+	InterFreqCarrierFreqInfo-v8h0.c	\
+	InterFreqCarrierFreqInfo-v9e0.c	\
+	InterFreqCarrierFreqInfo-v10j0.c	\
+	InterFreqCarrierFreqInfo-v1250.c	\
+	InterFreqCarrierFreqInfo-r12.c	\
+	InterFreqCarrierFreqInfo-v1310.c	\
+	InterFreqCarrierFreqInfo-v1350.c	\
+	InterFreqNeighCellList.c	\
+	InterFreqNeighCellInfo.c	\
+	InterFreqBlackCellList.c	\
+	RedistributionInterFreqInfo-r13.c	\
+	RedistributionNeighCellList-r13.c	\
+	RedistributionNeighCell-r13.c	\
+	RedistributionFactor-r13.c	\
+	SystemInformationBlockType6-v8h0-IEs.c	\
+	CarrierFreqInfoUTRA-v1250.c	\
+	CarrierFreqListUTRA-FDD.c	\
+	CarrierFreqUTRA-FDD.c	\
+	CarrierFreqInfoUTRA-FDD-v8h0.c	\
+	CarrierFreqListUTRA-FDD-Ext-r12.c	\
+	CarrierFreqUTRA-FDD-Ext-r12.c	\
+	CarrierFreqListUTRA-TDD.c	\
+	CarrierFreqUTRA-TDD.c	\
+	CarrierFreqListUTRA-TDD-Ext-r12.c	\
+	CarrierFreqUTRA-TDD-r12.c	\
+	FreqBandIndicator-UTRA-FDD.c	\
+	CarrierFreqsInfoListGERAN.c	\
+	CarrierFreqsInfoGERAN.c	\
+	SystemTimeInfoCDMA2000.c	\
+	PreRegistrationInfoHRPD.c	\
+	SecondaryPreRegistrationZoneIdListHRPD.c	\
+	PreRegistrationZoneIdHRPD.c	\
+	CellReselectionParametersCDMA2000.c	\
+	CellReselectionParametersCDMA2000-r11.c	\
+	CellReselectionParametersCDMA2000-v920.c	\
+	NeighCellListCDMA2000.c	\
+	NeighCellCDMA2000.c	\
+	NeighCellCDMA2000-r11.c	\
+	NeighCellsPerBandclassListCDMA2000.c	\
+	NeighCellsPerBandclassCDMA2000.c	\
+	NeighCellsPerBandclassCDMA2000-r11.c	\
+	NeighCellListCDMA2000-v920.c	\
+	NeighCellCDMA2000-v920.c	\
+	NeighCellsPerBandclassListCDMA2000-v920.c	\
+	NeighCellsPerBandclassCDMA2000-v920.c	\
+	PhysCellIdListCDMA2000.c	\
+	PhysCellIdListCDMA2000-v920.c	\
+	BandClassListCDMA2000.c	\
+	BandClassInfoCDMA2000.c	\
+	AC-BarringConfig1XRTT-r9.c	\
+	SIB8-PerPLMN-List-r11.c	\
+	SIB8-PerPLMN-r11.c	\
+	ParametersCDMA2000-r11.c	\
+	CSFB-RegistrationParam1XRTT.c	\
+	CSFB-RegistrationParam1XRTT-v920.c	\
+	MBSFN-AreaInfoList-r9.c	\
+	MBSFN-AreaInfo-r9.c	\
+	MBMS-NotificationConfig-r9.c	\
+	MBMS-NotificationConfig-v14xy.c	\
+	MBMS-SAI-InterFreq-v1140.c	\
+	MBMS-InterFreqCarrierTypeList-r14.c	\
+	MBMS-CarrierType-r14.c	\
+	FEMBMS-CarrierFreq-r14.c	\
+	WLAN-OffloadConfig-r12.c	\
+	WLAN-backhaulRate-r12.c	\
+	SL-CommTxPoolList-r12.c	\
+	SL-CommTxPoolListExt-r13.c	\
+	SL-CommTxPoolListV2X-r14.c	\
+	SL-CommRxPoolList-r12.c	\
+	SL-CommRxPoolListV2X-r14.c	\
+	SL-CommResourcePool-r12.c	\
+	SL-CommResourcePoolV2X-r14.c	\
+	SL-TRPT-Subset-r12.c	\
+	SL-V2X-TxPoolReportIdentity-r14.c	\
+	SL-SyncConfigList-r12.c	\
+	SL-SyncConfigListV2X-r14.c	\
+	SL-SyncConfig-r12.c	\
+	SL-SyncConfigListNFreq-r13.c	\
+	SL-SyncConfigListNFreqV2X-r14.c	\
+	SL-SyncConfigNFreq-r13.c	\
+	SL-DiscTxPoolList-r12.c	\
+	SL-DiscRxPoolList-r12.c	\
+	SL-DiscResourcePool-r12.c	\
+	PhysCellIdList-r13.c	\
+	SL-PoolSelectionConfig-r12.c	\
+	SL-DiscTxPowerInfoList-r12.c	\
+	SL-DiscTxPowerInfo-r12.c	\
+	RSRP-Range.c	\
+	RSRP-RangeSL-r12.c	\
+	RSRP-RangeSL2-r12.c	\
+	RSRP-RangeSL3-r12.c	\
+	RSRP-RangeSL4-r13.c	\
+	FilterCoefficient.c	\
+	CellSelectionInfoNFreq-r13.c	\
+	SL-InterFreqInfoListV2X-r14.c	\
+	SL-InterFreqInfoV2X-r14.c	\
+	SL-CommTxPoolSensingConfig-r14.c	\
+	SL-ZoneConfig-r14.c	\
+	SL-TypeTxSync-r14.c	\
+	DMRS-Config-r11.c	\
+	DMRS-Config-v1310.c	\
+	PDSCH-RE-MappingQCL-ConfigId-r11.c	\
+	CSI-RS-ConfigZPId-r11.c	\
+	CellReselectionSubPriority-r13.c	\
+	CSI-RS-ConfigNZPId-r11.c	\
+	CSI-RS-ConfigNZPId-v1310.c	\
+	CSI-RS-ConfigNZPId-r13.c	\
+	PhysCellId.c	\
+	Q-OffsetRange.c	\
+	ARFCN-ValueUTRA.c	\
+	CarrierFreqsGERAN.c	\
+	ExplicitListOfARFCNs.c	\
+	ARFCN-ValueCDMA2000.c	\
+	PhysCellIdCDMA2000.c	\
+	BandclassCDMA2000.c	\
+	MBSFN-AreaId-r12.c	\
+	RSRQ-Range.c	\
+	RSRQ-Range-v1250.c	\
+	RSRQ-Range-r13.c	\
+	SL-CP-Len-r12.c	\
+	SL-PeriodComm-r12.c	\
+	SL-TF-ResourceConfig-r12.c	\
+	SubframeBitmapSL-r12.c	\
+	SubframeBitmapSL-r14.c	\
+	SL-HoppingConfigComm-r12.c	\
+	SL-HoppingConfigDisc-r12.c	\
+	SL-TxParameters-r12.c	\
+	P0-SL-r12.c	\
+	SL-PriorityList-r13.c	\
+	SL-Priority-r13.c	\
+	SL-OffsetIndicator-r12.c	\
+	SL-OffsetIndicatorSync-r12.c	\
+	SL-OffsetIndicatorSync-v14xy.c	\
+	SL-OffsetIndicatorSync-r14.c	\
+	SL-CBR-MeasConfig-r14.c	\
+	SL-ThresS-RSSI-CBR-r14.c	\
+	SL-CBR-PSSCH-TxConfigList-r14.c	\
+	SL-CBR-PSSCH-TxConfig-r14.c	\
+	SL-PPPP-PSSCH-TxConfig-r14.c	\
+	SL-P2X-ResourceSelectionConfig-r14.c	\
+	SL-SyncAllowed-r14.c	\
+	SL-RestrictResourceReservationPeriodList-r14.c	\
+	SL-RestrictResourceReservationPeriod-r14.c	\
+	SLSSID-r12.c	\
+	SL-V2X-UE-SelectionConfigList-r14.c	\
+	SL-V2X-InterFreqUE-SelectionConfig-r14.c	\
+	SL-PSSCH-TxConfigList-r14.c	\
+	SL-PSSCH-TxConfig-r14.c	\
+	SL-PSSCH-TxParameters-r14.c	\
+	SL-ThresPSSCH-RSRP-List-r14.c	\
+	SL-ThresPSSCH-RSRP-r14.c	\
+	SL-P2X-SensingConfig-r14.c	\
+	ARFCN-ValueGERAN.c	\
+	BandIndicatorGERAN.c	\
+	SL-CBR-Range-r14.c	\
+	SL-CBR-r14.c	\
+	SL-TxPower-r14.c
+
+ASN_MODULE_HDRS=	\
+	BCCH-DL-SCH-Message.h	\
+	BCCH-DL-SCH-MessageType.h	\
+	SystemInformation.h	\
+	SystemInformationBlockType1.h	\
+	SystemInformation-r8-IEs.h	\
+	PLMN-Identity.h	\
+	MCC.h	\
+	MNC.h	\
+	MCC-MNC-Digit.h	\
+	MultiBandInfoList.h	\
+	MultiBandInfoList-v9e0.h	\
+	MultiBandInfoList-v10j0.h	\
+	MultiBandInfoList-r11.h	\
+	MultiBandInfo-v9e0.h	\
+	AdditionalSpectrumEmission.h	\
+	NS-PmaxList-r10.h	\
+	NS-PmaxValue-r10.h	\
+	FreqBandIndicator-v9e0.h	\
+	FreqBandIndicator-r11.h	\
+	TrackingAreaCode.h	\
+	CellIdentity.h	\
+	CSG-Identity.h	\
+	Q-RxLevMin.h	\
+	P-Max.h	\
+	FreqBandIndicator.h	\
+	TDD-Config.h	\
+	TDD-Config-v1130.h	\
+	TDD-Config-v14xy.h	\
+	TDD-ConfigSL-r12.h	\
+	CellSelectionInfoCE-r13.h	\
+	Q-QualMin-r9.h	\
+	CellSelectionInfoCE1-r13.h	\
+	SystemInformationBlockType1-v890-IEs.h	\
+	SystemInformationBlockType1-v8h0-IEs.h	\
+	SystemInformationBlockType1-v9e0-IEs.h	\
+	SystemInformationBlockType1-v10j0-IEs.h	\
+	SystemInformationBlockType1-v920-IEs.h	\
+	SystemInformationBlockType1-v1130-IEs.h	\
+	SystemInformationBlockType1-v1250-IEs.h	\
+	SystemInformationBlockType1-v1310-IEs.h	\
+	SystemInformationBlockType1-v1320-IEs.h	\
+	SystemInformationBlockType1-v1350-IEs.h	\
+	SystemInformationBlockType1-v14xy-IEs.h	\
+	PLMN-IdentityList.h	\
+	PLMN-IdentityInfo.h	\
+	SchedulingInfoList.h	\
+	SchedulingInfo.h	\
+	SchedulingInfoList-BR-r13.h	\
+	SchedulingInfo-BR-r13.h	\
+	SIB-MappingInfo.h	\
+	SIB-Type.h	\
+	SystemInfoValueTagList-r13.h	\
+	SystemInfoValueTagSI-r13.h	\
+	CellSelectionInfo-v920.h	\
+	CellSelectionInfo-v1130.h	\
+	CellSelectionInfo-v1250.h	\
+	RadioResourceConfigCommonSIB.h	\
+	RadioResourceConfigCommon.h	\
+	RadioResourceConfigCommonPSCell-r12.h	\
+	RadioResourceConfigCommonSCell-r10.h	\
+	BCCH-Config.h	\
+	BCCH-Config-v1310.h	\
+	FreqHoppingParameters-r13.h	\
+	PCCH-Config.h	\
+	PCCH-Config-v1310.h	\
+	UL-CyclicPrefixLength.h	\
+	HighSpeedConfig-r14.h	\
+	HighSpeedConfigSCell-r14.h	\
+	RACH-ConfigCommon.h	\
+	RACH-ConfigCommon-v1250.h	\
+	RACH-ConfigCommonSCell-r11.h	\
+	RACH-CE-LevelInfoList-r13.h	\
+	RACH-CE-LevelInfo-r13.h	\
+	PowerRampingParameters.h	\
+	PreambleTransMax.h	\
+	SystemInformationBlockType2.h	\
+	SystemInformationBlockType2-v8h0-IEs.h	\
+	SystemInformationBlockType2-v9e0-IEs.h	\
+	AC-BarringConfig.h	\
+	MBSFN-SubframeConfigList.h	\
+	MBSFN-SubframeConfigList-v14xy.h	\
+	AC-BarringPerPLMN-List-r12.h	\
+	AC-BarringPerPLMN-r12.h	\
+	ACDC-BarringForCommon-r13.h	\
+	ACDC-BarringPerPLMN-List-r13.h	\
+	ACDC-BarringPerPLMN-r13.h	\
+	BarringPerACDC-CategoryList-r13.h	\
+	BarringPerACDC-Category-r13.h	\
+	UDT-Restricting-r13.h	\
+	UDT-RestrictingPerPLMN-List-r13.h	\
+	UDT-RestrictingPerPLMN-r13.h	\
+	CIOT-EPS-OptimisationInfo-r13.h	\
+	CIOT-OptimisationPLMN-r13.h	\
+	SystemInformationBlockType3.h	\
+	SystemInformationBlockType4.h	\
+	SystemInformationBlockType5.h	\
+	SystemInformationBlockType6.h	\
+	SystemInformationBlockType7.h	\
+	SystemInformationBlockType8.h	\
+	SystemInformationBlockType9.h	\
+	SystemInformationBlockType10.h	\
+	SystemInformationBlockType11.h	\
+	SystemInformationBlockType12-r9.h	\
+	SystemInformationBlockType13-r9.h	\
+	SystemInformationBlockType14-r11.h	\
+	EAB-ConfigPLMN-r11.h	\
+	EAB-Config-r11.h	\
+	SystemInformationBlockType15-r11.h	\
+	MBMS-SAI-List-r11.h	\
+	MBMS-SAI-r11.h	\
+	MBMS-SAI-InterFreqList-r11.h	\
+	MBMS-SAI-InterFreqList-v1140.h	\
+	MBMS-SAI-InterFreq-r11.h	\
+	SystemInformationBlockType16-r11.h	\
+	SystemInformationBlockType17-r12.h	\
+	WLAN-OffloadInfoPerPLMN-r12.h	\
+	WLAN-Id-List-r12.h	\
+	WLAN-Identifiers-r12.h	\
+	SystemInformationBlockType18-r12.h	\
+	SystemInformationBlockType19-r12.h	\
+	SL-CarrierFreqInfoList-r12.h	\
+	SL-CarrierFreqInfoList-v1310.h	\
+	SL-CarrierFreqInfo-r12.h	\
+	SL-DiscConfigRelayUE-r13.h	\
+	SL-DiscConfigRemoteUE-r13.h	\
+	ReselectionInfoRelay-r13.h	\
+	SL-CarrierFreqInfo-v1310.h	\
+	PLMN-IdentityList4-r12.h	\
+	PLMN-IdentityInfo2-r12.h	\
+	SL-DiscTxResourcesInterFreq-r13.h	\
+	SL-DiscConfigOtherInterFreq-r13.h	\
+	SL-ResourcesInterFreq-r13.h	\
+	SystemInformationBlockType20-r13.h	\
+	MPDCCH-SC-MCCH-Config-r14.h	\
+	SC-MCCH-SchedulingInfo-r14.h	\
+	SystemInformationBlockType21-r14.h	\
+	SL-V2X-ConfigCommon-r14.h	\
+	SystemInformation-v8a0-IEs.h	\
+	PRACH-ConfigSIB.h	\
+	PRACH-Config.h	\
+	PRACH-ConfigInfo.h	\
+	PDSCH-ConfigCommon.h	\
+	PDSCH-ConfigCommon-v1310.h	\
+	PDSCH-ConfigDedicated.h	\
+	PDSCH-ConfigDedicated-v1130.h	\
+	PDSCH-ConfigDedicated-v1280.h	\
+	PDSCH-ConfigDedicated-v1310.h	\
+	PDSCH-ConfigDedicated-v14xy.h	\
+	RE-MappingQCLConfigToAddModList-r11.h	\
+	RE-MappingQCLConfigToReleaseList-r11.h	\
+	PDSCH-RE-MappingQCL-Config-r11.h	\
+	SoundingRS-UL-ConfigCommon.h	\
+	SoundingRS-UL-ConfigDedicated.h	\
+	SoundingRS-UL-ConfigDedicated-v1020.h	\
+	SoundingRS-UL-ConfigDedicated-v1310.h	\
+	SoundingRS-UL-ConfigDedicatedUpPTsExt-r13.h	\
+	SoundingRS-UL-ConfigDedicatedAperiodic-r10.h	\
+	SoundingRS-UL-ConfigDedicatedAperiodic-v1310.h	\
+	SoundingRS-UL-ConfigDedicatedAperiodicUpPTsExt-r13.h	\
+	SoundingRS-UL-ConfigDedicatedAperiodic-v14xy.h	\
+	SRS-ConfigAp-r10.h	\
+	SRS-ConfigAp-v1310.h	\
+	SRS-ConfigAp-r13.h	\
+	SRS-AntennaPort.h	\
+	UplinkPowerControlCommon.h	\
+	UplinkPowerControlCommon-v1020.h	\
+	UplinkPowerControlCommon-v1310.h	\
+	UplinkPowerControlCommonPSCell-r12.h	\
+	UplinkPowerControlCommonSCell-r10.h	\
+	UplinkPowerControlCommonSCell-v1130.h	\
+	UplinkPowerControlCommonSCell-v1310.h	\
+	UplinkPowerControlCommonPUSCH-LessCell-v14xy.h	\
+	UplinkPowerControlDedicated.h	\
+	UplinkPowerControlDedicated-v1020.h	\
+	UplinkPowerControlDedicated-v1130.h	\
+	UplinkPowerControlDedicated-v1250.h	\
+	UplinkPUSCH-LessPowerControlDedicated-v14xy.h	\
+	UplinkPowerControlDedicatedSCell-r10.h	\
+	UplinkPowerControlDedicatedSCell-v1310.h	\
+	Alpha-r12.h	\
+	DeltaFList-PUCCH.h	\
+	DeltaTxD-OffsetListPUCCH-r10.h	\
+	DeltaTxD-OffsetListPUCCH-v1130.h	\
+	PUSCH-ConfigCommon.h	\
+	PUSCH-ConfigCommon-v1270.h	\
+	PUSCH-ConfigCommon-v1310.h	\
+	PUSCH-ConfigDedicated.h	\
+	PUSCH-ConfigDedicated-v1020.h	\
+	PUSCH-ConfigDedicated-v1130.h	\
+	PUSCH-ConfigDedicated-v1250.h	\
+	PUSCH-ConfigDedicated-r13.h	\
+	PUSCH-ConfigDedicated-v14xy.h	\
+	PUSCH-ConfigDedicatedSCell-r10.h	\
+	TDD-PUSCH-UpPTS-r14.h	\
+	PUSCH-ConfigDedicatedScell-v14xy.h	\
+	Enable256QAM-r14.h	\
+	PUSCH-EnhancementsConf-r14.h	\
+	UL-ReferenceSignalsPUSCH.h	\
+	PUCCH-ConfigCommon.h	\
+	PUCCH-ConfigCommon-v1310.h	\
+	PUCCH-ConfigCommon-v14xy.h	\
+	PUCCH-ConfigDedicated.h	\
+	PUCCH-ConfigDedicated-v1020.h	\
+	PUCCH-ConfigDedicated-v1130.h	\
+	PUCCH-ConfigDedicated-v1250.h	\
+	PUCCH-ConfigDedicated-r13.h	\
+	PUCCH-ConfigDedicated-v14xy.h	\
+	Format4-resource-r13.h	\
+	Format5-resource-r13.h	\
+	N1PUCCH-AN-CS-r10.h	\
+	N1PUCCH-AN-InfoList-r13.h	\
+	PRACH-ConfigSIB-v1310.h	\
+	PRACH-Config-v1310.h	\
+	PRACH-Config-v14xy.h	\
+	PRACH-ConfigSCell-r10.h	\
+	PRACH-ParametersListCE-r13.h	\
+	PRACH-ParametersCE-r13.h	\
+	RSRP-ThresholdsPrachInfoList-r13.h	\
+	PHICH-Config.h	\
+	AntennaInfoCommon.h	\
+	AntennaInfoDedicated.h	\
+	AntennaInfoDedicated-v920.h	\
+	AntennaInfoDedicated-r10.h	\
+	AntennaInfoDedicated-v10i0.h	\
+	AntennaInfoDedicated-v1250.h	\
+	AntennaInfoDedicated-v14xy.h	\
+	ARFCN-ValueEUTRA.h	\
+	ARFCN-ValueEUTRA-v9e0.h	\
+	ARFCN-ValueEUTRA-r9.h	\
+	UE-TimersAndConstants.h	\
+	TimeAlignmentTimer.h	\
+	MBSFN-SubframeConfig.h	\
+	MBSFN-SubframeConfig-v14xy.h	\
+	MobilityStateParameters.h	\
+	ReselectionThreshold.h	\
+	CellReselectionPriority.h	\
+	AllowedMeasBandwidth.h	\
+	PresenceAntennaPort1.h	\
+	NeighCellConfig.h	\
+	T-Reselection-NB-r13.h	\
+	SpeedStateScaleFactors.h	\
+	ReselectionThresholdQ-r9.h	\
+	RedistributionServingInfo-r13.h	\
+	CellReselectionServingFreqInfo-v1310.h	\
+	SystemInformationBlockType3-v10j0-IEs.h	\
+	T-Reselection.h	\
+	T-ReselectionEUTRA-CE-r13.h	\
+	IntraFreqNeighCellList.h	\
+	IntraFreqNeighCellInfo.h	\
+	IntraFreqBlackCellList.h	\
+	PhysCellIdRange.h	\
+	SystemInformationBlockType5-v8h0-IEs.h	\
+	SystemInformationBlockType5-v9e0-IEs.h	\
+	SystemInformationBlockType5-v10j0-IEs.h	\
+	InterFreqCarrierFreqList.h	\
+	InterFreqCarrierFreqList-v1250.h	\
+	InterFreqCarrierFreqList-v1310.h	\
+	InterFreqCarrierFreqList-v1350.h	\
+	InterFreqCarrierFreqListExt-r12.h	\
+	InterFreqCarrierFreqListExt-v1280.h	\
+	InterFreqCarrierFreqListExt-v1310.h	\
+	InterFreqCarrierFreqListExt-v1350.h	\
+	InterFreqCarrierFreqInfo.h	\
+	InterFreqCarrierFreqInfo-v8h0.h	\
+	InterFreqCarrierFreqInfo-v9e0.h	\
+	InterFreqCarrierFreqInfo-v10j0.h	\
+	InterFreqCarrierFreqInfo-v1250.h	\
+	InterFreqCarrierFreqInfo-r12.h	\
+	InterFreqCarrierFreqInfo-v1310.h	\
+	InterFreqCarrierFreqInfo-v1350.h	\
+	InterFreqNeighCellList.h	\
+	InterFreqNeighCellInfo.h	\
+	InterFreqBlackCellList.h	\
+	RedistributionInterFreqInfo-r13.h	\
+	RedistributionNeighCellList-r13.h	\
+	RedistributionNeighCell-r13.h	\
+	RedistributionFactor-r13.h	\
+	SystemInformationBlockType6-v8h0-IEs.h	\
+	CarrierFreqInfoUTRA-v1250.h	\
+	CarrierFreqListUTRA-FDD.h	\
+	CarrierFreqUTRA-FDD.h	\
+	CarrierFreqInfoUTRA-FDD-v8h0.h	\
+	CarrierFreqListUTRA-FDD-Ext-r12.h	\
+	CarrierFreqUTRA-FDD-Ext-r12.h	\
+	CarrierFreqListUTRA-TDD.h	\
+	CarrierFreqUTRA-TDD.h	\
+	CarrierFreqListUTRA-TDD-Ext-r12.h	\
+	CarrierFreqUTRA-TDD-r12.h	\
+	FreqBandIndicator-UTRA-FDD.h	\
+	CarrierFreqsInfoListGERAN.h	\
+	CarrierFreqsInfoGERAN.h	\
+	SystemTimeInfoCDMA2000.h	\
+	PreRegistrationInfoHRPD.h	\
+	SecondaryPreRegistrationZoneIdListHRPD.h	\
+	PreRegistrationZoneIdHRPD.h	\
+	CellReselectionParametersCDMA2000.h	\
+	CellReselectionParametersCDMA2000-r11.h	\
+	CellReselectionParametersCDMA2000-v920.h	\
+	NeighCellListCDMA2000.h	\
+	NeighCellCDMA2000.h	\
+	NeighCellCDMA2000-r11.h	\
+	NeighCellsPerBandclassListCDMA2000.h	\
+	NeighCellsPerBandclassCDMA2000.h	\
+	NeighCellsPerBandclassCDMA2000-r11.h	\
+	NeighCellListCDMA2000-v920.h	\
+	NeighCellCDMA2000-v920.h	\
+	NeighCellsPerBandclassListCDMA2000-v920.h	\
+	NeighCellsPerBandclassCDMA2000-v920.h	\
+	PhysCellIdListCDMA2000.h	\
+	PhysCellIdListCDMA2000-v920.h	\
+	BandClassListCDMA2000.h	\
+	BandClassInfoCDMA2000.h	\
+	AC-BarringConfig1XRTT-r9.h	\
+	SIB8-PerPLMN-List-r11.h	\
+	SIB8-PerPLMN-r11.h	\
+	ParametersCDMA2000-r11.h	\
+	CSFB-RegistrationParam1XRTT.h	\
+	CSFB-RegistrationParam1XRTT-v920.h	\
+	MBSFN-AreaInfoList-r9.h	\
+	MBSFN-AreaInfo-r9.h	\
+	MBMS-NotificationConfig-r9.h	\
+	MBMS-NotificationConfig-v14xy.h	\
+	MBMS-SAI-InterFreq-v1140.h	\
+	MBMS-InterFreqCarrierTypeList-r14.h	\
+	MBMS-CarrierType-r14.h	\
+	FEMBMS-CarrierFreq-r14.h	\
+	WLAN-OffloadConfig-r12.h	\
+	WLAN-backhaulRate-r12.h	\
+	SL-CommTxPoolList-r12.h	\
+	SL-CommTxPoolListExt-r13.h	\
+	SL-CommTxPoolListV2X-r14.h	\
+	SL-CommRxPoolList-r12.h	\
+	SL-CommRxPoolListV2X-r14.h	\
+	SL-CommResourcePool-r12.h	\
+	SL-CommResourcePoolV2X-r14.h	\
+	SL-TRPT-Subset-r12.h	\
+	SL-V2X-TxPoolReportIdentity-r14.h	\
+	SL-SyncConfigList-r12.h	\
+	SL-SyncConfigListV2X-r14.h	\
+	SL-SyncConfig-r12.h	\
+	SL-SyncConfigListNFreq-r13.h	\
+	SL-SyncConfigListNFreqV2X-r14.h	\
+	SL-SyncConfigNFreq-r13.h	\
+	SL-DiscTxPoolList-r12.h	\
+	SL-DiscRxPoolList-r12.h	\
+	SL-DiscResourcePool-r12.h	\
+	PhysCellIdList-r13.h	\
+	SL-PoolSelectionConfig-r12.h	\
+	SL-DiscTxPowerInfoList-r12.h	\
+	SL-DiscTxPowerInfo-r12.h	\
+	RSRP-Range.h	\
+	RSRP-RangeSL-r12.h	\
+	RSRP-RangeSL2-r12.h	\
+	RSRP-RangeSL3-r12.h	\
+	RSRP-RangeSL4-r13.h	\
+	FilterCoefficient.h	\
+	CellSelectionInfoNFreq-r13.h	\
+	SL-InterFreqInfoListV2X-r14.h	\
+	SL-InterFreqInfoV2X-r14.h	\
+	SL-CommTxPoolSensingConfig-r14.h	\
+	SL-ZoneConfig-r14.h	\
+	SL-TypeTxSync-r14.h	\
+	DMRS-Config-r11.h	\
+	DMRS-Config-v1310.h	\
+	PDSCH-RE-MappingQCL-ConfigId-r11.h	\
+	CSI-RS-ConfigZPId-r11.h	\
+	CellReselectionSubPriority-r13.h	\
+	CSI-RS-ConfigNZPId-r11.h	\
+	CSI-RS-ConfigNZPId-v1310.h	\
+	CSI-RS-ConfigNZPId-r13.h	\
+	PhysCellId.h	\
+	Q-OffsetRange.h	\
+	ARFCN-ValueUTRA.h	\
+	CarrierFreqsGERAN.h	\
+	ExplicitListOfARFCNs.h	\
+	ARFCN-ValueCDMA2000.h	\
+	PhysCellIdCDMA2000.h	\
+	BandclassCDMA2000.h	\
+	MBSFN-AreaId-r12.h	\
+	RSRQ-Range.h	\
+	RSRQ-Range-v1250.h	\
+	RSRQ-Range-r13.h	\
+	SL-CP-Len-r12.h	\
+	SL-PeriodComm-r12.h	\
+	SL-TF-ResourceConfig-r12.h	\
+	SubframeBitmapSL-r12.h	\
+	SubframeBitmapSL-r14.h	\
+	SL-HoppingConfigComm-r12.h	\
+	SL-HoppingConfigDisc-r12.h	\
+	SL-TxParameters-r12.h	\
+	P0-SL-r12.h	\
+	SL-PriorityList-r13.h	\
+	SL-Priority-r13.h	\
+	SL-OffsetIndicator-r12.h	\
+	SL-OffsetIndicatorSync-r12.h	\
+	SL-OffsetIndicatorSync-v14xy.h	\
+	SL-OffsetIndicatorSync-r14.h	\
+	SL-CBR-MeasConfig-r14.h	\
+	SL-ThresS-RSSI-CBR-r14.h	\
+	SL-CBR-PSSCH-TxConfigList-r14.h	\
+	SL-CBR-PSSCH-TxConfig-r14.h	\
+	SL-PPPP-PSSCH-TxConfig-r14.h	\
+	SL-P2X-ResourceSelectionConfig-r14.h	\
+	SL-SyncAllowed-r14.h	\
+	SL-RestrictResourceReservationPeriodList-r14.h	\
+	SL-RestrictResourceReservationPeriod-r14.h	\
+	SLSSID-r12.h	\
+	SL-V2X-UE-SelectionConfigList-r14.h	\
+	SL-V2X-InterFreqUE-SelectionConfig-r14.h	\
+	SL-PSSCH-TxConfigList-r14.h	\
+	SL-PSSCH-TxConfig-r14.h	\
+	SL-PSSCH-TxParameters-r14.h	\
+	SL-ThresPSSCH-RSRP-List-r14.h	\
+	SL-ThresPSSCH-RSRP-r14.h	\
+	SL-P2X-SensingConfig-r14.h	\
+	ARFCN-ValueGERAN.h	\
+	BandIndicatorGERAN.h	\
+	SL-CBR-Range-r14.h	\
+	SL-CBR-r14.h	\
+	SL-TxPower-r14.h
+
+ASN_MODULE_HDRS+=OPEN_TYPE.h
+ASN_MODULE_SRCS+=OPEN_TYPE.c
+ASN_MODULE_HDRS+=constr_CHOICE.h
+ASN_MODULE_HDRS+=BOOLEAN.h
+ASN_MODULE_SRCS+=BOOLEAN.c
+ASN_MODULE_HDRS+=INTEGER.h
+ASN_MODULE_SRCS+=INTEGER.c
+ASN_MODULE_HDRS+=NULL.h
+ASN_MODULE_SRCS+=NULL.c
+ASN_MODULE_HDRS+=NativeEnumerated.h
+ASN_MODULE_SRCS+=NativeEnumerated.c
+ASN_MODULE_HDRS+=NativeInteger.h
+ASN_MODULE_SRCS+=NativeInteger.c
+ASN_MODULE_HDRS+=asn_SEQUENCE_OF.h
+ASN_MODULE_SRCS+=asn_SEQUENCE_OF.c
+ASN_MODULE_HDRS+=asn_SET_OF.h
+ASN_MODULE_SRCS+=asn_SET_OF.c
+ASN_MODULE_SRCS+=constr_CHOICE.c
+ASN_MODULE_HDRS+=constr_SEQUENCE.h
+ASN_MODULE_SRCS+=constr_SEQUENCE.c
+ASN_MODULE_HDRS+=constr_SEQUENCE_OF.h
+ASN_MODULE_SRCS+=constr_SEQUENCE_OF.c
+ASN_MODULE_HDRS+=constr_SET_OF.h
+ASN_MODULE_SRCS+=constr_SET_OF.c
+ASN_MODULE_HDRS+=asn_application.h
+ASN_MODULE_SRCS+=asn_application.c
+ASN_MODULE_HDRS+=asn_ioc.h
+ASN_MODULE_HDRS+=asn_system.h
+ASN_MODULE_HDRS+=asn_codecs.h
+ASN_MODULE_HDRS+=asn_internal.h
+ASN_MODULE_SRCS+=asn_internal.c
+ASN_MODULE_HDRS+=asn_random_fill.h
+ASN_MODULE_SRCS+=asn_random_fill.c
+ASN_MODULE_HDRS+=asn_bit_data.h
+ASN_MODULE_SRCS+=asn_bit_data.c
+ASN_MODULE_HDRS+=OCTET_STRING.h
+ASN_MODULE_SRCS+=OCTET_STRING.c
+ASN_MODULE_HDRS+=BIT_STRING.h
+ASN_MODULE_SRCS+=BIT_STRING.c
+ASN_MODULE_SRCS+=asn_codecs_prim.c
+ASN_MODULE_HDRS+=asn_codecs_prim.h
+ASN_MODULE_HDRS+=ber_tlv_length.h
+ASN_MODULE_SRCS+=ber_tlv_length.c
+ASN_MODULE_HDRS+=ber_tlv_tag.h
+ASN_MODULE_SRCS+=ber_tlv_tag.c
+ASN_MODULE_HDRS+=ber_decoder.h
+ASN_MODULE_SRCS+=ber_decoder.c
+ASN_MODULE_HDRS+=der_encoder.h
+ASN_MODULE_SRCS+=der_encoder.c
+ASN_MODULE_HDRS+=constr_TYPE.h
+ASN_MODULE_SRCS+=constr_TYPE.c
+ASN_MODULE_HDRS+=constraints.h
+ASN_MODULE_SRCS+=constraints.c
+ASN_MODULE_HDRS+=xer_support.h
+ASN_MODULE_SRCS+=xer_support.c
+ASN_MODULE_HDRS+=xer_decoder.h
+ASN_MODULE_SRCS+=xer_decoder.c
+ASN_MODULE_HDRS+=xer_encoder.h
+ASN_MODULE_SRCS+=xer_encoder.c
+ASN_MODULE_HDRS+=per_support.h
+ASN_MODULE_SRCS+=per_support.c
+ASN_MODULE_HDRS+=per_decoder.h
+ASN_MODULE_SRCS+=per_decoder.c
+ASN_MODULE_HDRS+=per_encoder.h
+ASN_MODULE_SRCS+=per_encoder.c
+ASN_MODULE_HDRS+=per_opentype.h
+ASN_MODULE_SRCS+=per_opentype.c
+ASN_MODULE_HDRS+=oer_decoder.h
+ASN_MODULE_HDRS+=oer_encoder.h
+ASN_MODULE_HDRS+=oer_support.h
+ASN_MODULE_SRCS+=oer_decoder.c
+ASN_MODULE_SRCS+=oer_encoder.c
+ASN_MODULE_SRCS+=oer_support.c
+ASN_MODULE_SRCS+=OPEN_TYPE_oer.c
+ASN_MODULE_SRCS+=INTEGER_oer.c
+ASN_MODULE_SRCS+=BIT_STRING_oer.c
+ASN_MODULE_SRCS+=OCTET_STRING_oer.c
+ASN_MODULE_SRCS+=NativeInteger_oer.c
+ASN_MODULE_SRCS+=NativeEnumerated_oer.c
+ASN_MODULE_SRCS+=constr_CHOICE_oer.c
+ASN_MODULE_SRCS+=constr_SEQUENCE_oer.c
+ASN_MODULE_SRCS+=constr_SET_OF_oer.c
+
+ASN_MODULE_CFLAGS=
+
+lib_LTLIBRARIES+=libasncodec.la
+libasncodec_la_SOURCES=$(ASN_MODULE_SRCS) $(ASN_MODULE_HDRS)
+libasncodec_la_CPPFLAGS=-I$(top_srcdir)/
+libasncodec_la_CFLAGS=$(ASN_MODULE_CFLAGS)
+libasncodec_la_LDFLAGS=-lm
